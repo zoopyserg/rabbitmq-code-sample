@@ -1,0 +1,36 @@
+[2024-06-20T12:08:04.806+00:00] [0;36mINFO[0m: Producer initialized
+{
+    :queue => "tasks"
+}
+[2024-06-20T12:08:04.807+00:00] [0;36mINFO[0m: Message published
+{
+    :payload => "Hello, World!"
+}
+[2024-06-20T12:08:04.807+00:00] [0;36mINFO[0m: Connection closed
+[2024-06-20T12:11:22.869+00:00] [0;36mINFO[0m: Producer initialized
+{
+    :queue => "tasks"
+}
+[2024-06-20T12:11:22.869+00:00] [0;36mINFO[0m: Message published
+{
+    :payload => "Hello, World!"
+}
+[2024-06-20T12:11:22.869+00:00] [0;36mINFO[0m: Connection closed
+[2024-06-20T12:11:23.311+00:00] [0;36mINFO[0m: Producer initialized
+{
+    :queue => "tasks"
+}
+[2024-06-20T12:11:23.311+00:00] [0;36mINFO[0m: Message published
+{
+    :payload => "Hello, World!"
+}
+[2024-06-20T12:11:23.313+00:00] [0;36mINFO[0m: Connection closed
+[2024-06-20T12:11:23.488+00:00] [0;36mINFO[0m: Producer initialized
+{
+    :queue => "tasks"
+}
+[2024-06-20T12:11:23.488+00:00] [0;36mINFO[0m: Message published
+{
+    :payload => "Hello, World!"
+}
+[2024-06-20T12:11:23.490+00:00] [0;36mINFO[0m: Connection closed

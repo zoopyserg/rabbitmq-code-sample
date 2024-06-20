@@ -1,0 +1,83 @@
+version: '3.8'
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+    networks:
+      - rabbitmq-network
+
+  web:
+    build: .
+    hostname: web
+    ports:
+      - "4567:4567"
+    depends_on:
+      - rabbitmq
+    environment:
+      RACK_ENV: development
+    volumes:
+      - .:/app
+    networks:
+      - rabbitmq-network
+
+  consumer:
+    build: .
+    hostname: consumer
+    depends_on:
+      - rabbitmq
+    environment:
+      RACK_ENV: development
+    volumes:
+      - .:/app
+    networks:
+      - rabbitmq-network
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.8.0
+    hostname: elasticsearch
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+    networks:
+      - rabbitmq-network
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.8.0
+    hostname: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - rabbitmq-network
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat-oss:7.8.0
+    hostname: filebeat
+    user: root
+    volumes:
+      - filebeat:/usr/share/filebeat/data
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./log:/var/log/ads
+    depends_on:
+      - rabbitmq
+      - elasticsearch
+      - kibana
+    networks:
+      - rabbitmq-network
+
+networks:
+  rabbitmq-network:
+    driver: bridge
+
+volumes:
+  rabbitmq:
+  filebeat:
+  elasticsearch:
