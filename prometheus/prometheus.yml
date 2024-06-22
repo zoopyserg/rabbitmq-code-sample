@@ -1,0 +1,17 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'web'
+    static_configs:
+      - targets: ['web:4567']
+
+  - job_name: 'consumer'
+    static_configs:
+      - targets: ['consumer:9394']
+
+  - job_name: 'rabbitmq'
+    metrics_path: '/api/metrics'
+    scheme: 'http'
+    static_configs:
+      - targets: ['rabbitmq:15672']

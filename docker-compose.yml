@@ -29,6 +29,8 @@ services:
   consumer:
     build: .
     hostname: consumer
+    ports:
+      - "9394:9394"
     depends_on:
       - rabbitmq
     environment:
@@ -70,6 +72,26 @@ services:
       - rabbitmq
       - elasticsearch
       - kibana
+    networks:
+      - rabbitmq-network
+
+  prometheus:
+    image: prom/prometheus
+    hostname: prometheus
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - rabbitmq-network
+
+  grafana:
+    image: grafana/grafana
+    hostname: grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
     networks:
       - rabbitmq-network
 

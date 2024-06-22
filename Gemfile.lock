@@ -15,6 +15,7 @@ GEM
       bigdecimal (>= 3.0)
     ougai (2.0.0)
       oj (~> 3.10)
+    prometheus-client (4.2.2)
     puma (6.4.2)
       nio4r (~> 2.0)
     rack (2.2.9)
@@ -46,6 +47,7 @@ DEPENDENCIES
   amazing_print
   bunny
   ougai
+  prometheus-client
   puma
   rack-ougai
   rack-request-id

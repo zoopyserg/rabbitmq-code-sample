@@ -4,6 +4,13 @@
 
 This repository contains a simple example of using RabbitMQ with a producer and consumer. The application logs messages and uses the ELK stack (Elasticsearch, Logstash, Kibana) for logging and visualization.
 
+## Kibana Screenshot
+
+![image](https://github.com/zoopyserg/rabbitmq-code-sample/assets/1587149/900ad060-54f3-4a2e-bc74-ac811fe3d5de)
+
+## Prometheus + Graphana Screenshot
+![image](https://github.com/zoopyserg/rabbitmq-code-sample/assets/1587149/d2ffe399-a3d2-4284-bac7-d76f6363ca04)
+
 ## Setup
 
 ### Prerequisites
